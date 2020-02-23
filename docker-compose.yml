@@ -5,9 +5,19 @@ volumes:
 
 services:
   nginx:
-    image: nginxdemos/hello
+    build:
+      context: nginx-hello/
+      dockerfile: Dockerfile
     depends_on:
       - "webhook"
+    environment:
+      - WEBHOOK_CONTAINER_NAME=webhook
+      - WEBHOOK_URI=none
+      - WAIT_FOR_WEBHOOK=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8080:80
 
   webhook:
     image: avinson/localhost-dot-run
