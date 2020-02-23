@@ -1,0 +1,22 @@
+version: "3.4"
+volumes:
+  ssh-data:
+    driver: local
+
+services:
+  nginx:
+    image: nginxdemos/hello
+    depends_on:
+      - "webhook"
+
+  webhook:
+    image: avinson/localhost-dot-run
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      - SSH_HOSTUSER=${USER}
+      - SSH_TUNNEL_HOST=nginx
+      - SSH_TUNNEL_LOCAL=80
+    volumes:
+      - ssh-data:/root/.ssh
