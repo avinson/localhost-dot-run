@@ -1,7 +1,6 @@
 #!/bin/sh
 
 if [ -n "$WAIT_FOR_WEBHOOK" ]; then
-  WEBHOOK_CONTAINER_NAME=webhook
   until docker logs ${WEBHOOK_CONTAINER_NAME} | grep -q "Connect to .*localhost.run" ; do
     >&2 echo "webhook unavailable - sleeping"
     sleep 1
