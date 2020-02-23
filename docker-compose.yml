@@ -11,6 +11,7 @@ services:
 
   webhook:
     image: avinson/localhost-dot-run
+    container_name: webhook
     restart: unless-stopped
     stdin_open: true
     tty: true
