@@ -1,4 +1,4 @@
-FROM nginx:mainline-alpine
+FROM nginx:1.17-alpine
 
 ENV DOCKERIZE_VERSION 0.6.1
 ENV DOCKERIZE_URL https://github.com/jwilder/dockerize/releases/download/v${DOCKERIZE_VERSION}/dockerize-linux-amd64-v${DOCKERIZE_VERSION}.tar.gz
