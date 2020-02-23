@@ -1,6 +1,3 @@
-# localhost-dot-run
-Simplified image for creating ssh tunnels with https://localhost.run
-
 ## Overview
 
 Simplified version of [jnovack/docker-autossh](https://github.com/jnovack/docker-autossh) for use with https://localhost.run/ in docker-based developer environments.
