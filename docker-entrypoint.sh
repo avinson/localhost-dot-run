@@ -3,8 +3,8 @@
 # Set up key file
 KEY_FILE=${SSH_KEY_FILE:=/root/.ssh/autossh_id_rsa}
 if [ ! -f "${KEY_FILE}" ]; then
-    echo "[INFO] Generating autossh_id_rsa..."
-    ssh-keygen -t rsa -b 4096 -C "autossh" -f root/.ssh/autossh_id_rsa -q -N ""
+    echo "[INFO] Generating ${SSH_KEY_FILE}"
+    ssh-keygen -t rsa -b 4096 -C "autossh" -f ${SSH_KEY_FILE} -q -N ""
 fi
 eval $(ssh-agent -s)
 cat "${SSH_KEY_FILE}" | ssh-add -k -
