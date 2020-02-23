@@ -35,6 +35,7 @@ services:
 
   webhook:
     image: avinson/localhost-dot-run
+    container_name: webhook
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -44,4 +45,19 @@ services:
       - SSH_TUNNEL_LOCAL=80
     volumes:
       - ssh-data:/root/.ssh
+```
+
+### entrypoint snippet ###
+
+In the nginx container, we could add the following snippet to an entrypoint script to read the URI:
+
+```
+if [ -n "$WAIT_FOR_WEBHOOK" ]; then
+  WEBHOOK_CONTAINER_NAME=webhook
+  until docker logs ${WEBHOOK_CONTAINER_NAME} | grep -q "Connect to .*localhost.run" ; do
+    >&2 echo "webhook unavailable - sleeping"
+    sleep 1
+  done
+  export WEBHOOK_URI=$(docker logs ${WEBHOOK_CONTAINER_NAME} | grep "Connect to .*localhost.run" | grep -Po 'https://.*')
+fi
 ```
