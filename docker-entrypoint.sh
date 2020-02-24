@@ -7,7 +7,7 @@ if [ ! -f "${KEY_FILE}" ]; then
     ssh-keygen -t rsa -b 4096 -C "autossh" -f ${KEY_FILE} -q -N ""
 fi
 eval $(ssh-agent -s)
-cat "${SSH_KEY_FILE}" | ssh-add -k -
+cat "${KEY_FILE}" | ssh-add -k -
 
 # Determine command line flags
 INFO_TUNNEL_SRC="${SSH_HOSTUSER:=root}@${SSH_HOSTNAME}:${SSH_TUNNEL_REMOTE:=${DEFAULT_PORT}}"
