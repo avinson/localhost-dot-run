@@ -1,6 +1,6 @@
 ## Overview
 
-Simplified version of [jnovack/docker-autossh](https://github.com/jnovack/docker-autossh) for use with https://localhost.run/ in docker-based developer environments.
+Simplified version of [jnovack/docker-autossh](https://github.com/jnovack/docker-autossh) for use of https://localhost.run/ within docker-based developer environments.
 
 ## Examples
 
