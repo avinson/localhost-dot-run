@@ -28,6 +28,6 @@ services:
     environment:
       - SSH_HOSTUSER=${USER}
       - SSH_TUNNEL_HOST=nginx
-      - SSH_TUNNEL_LOCAL=80
+      - SSH_TUNNEL_LOCAL=8080
     volumes:
       - ssh-data:/root/.ssh
