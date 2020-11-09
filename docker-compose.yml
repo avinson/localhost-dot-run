@@ -11,6 +11,7 @@ services:
     depends_on:
       - "webhook"
     environment:
+      - SSH_HOSTUSER=${USER}
       - WEBHOOK_CONTAINER_NAME=webhook
       - WEBHOOK_URI=none
       - WAIT_FOR_WEBHOOK=true
